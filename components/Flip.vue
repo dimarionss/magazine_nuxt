@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="flip">
     <Flipbook
       class="flipbook"
       :pages="pages"
@@ -36,13 +36,8 @@ export default {
 }
 </script>
 
-<style>
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-#app {
+<style lang='scss' scoped>
+.flip {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -53,12 +48,19 @@ body {
   background-color: #333;
   color: #ccc;
   overflow: hidden;
+  .flipbook {
+    width: 90vw;
+    height: 90vh;
+  }
+
+  .flipbook .viewport {
+    width: 90vw;
+    height: calc(100vh - 50px - 40px);
+  }
+
+  .flipbook .bounding-box {
+    box-shadow: 0 0 20px #000;
+  }
 }
-.flipbook {
-  width: 60vw;
-  height: calc(100vh - 50px - 40px);
-}
-.flipbook .bounding-box {
-  box-shadow: 0 0 20px #000;
-}
+</style>
 </style>
