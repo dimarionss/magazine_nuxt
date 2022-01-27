@@ -1,0 +1,91 @@
+[
+  {
+    "name": "answerOne",
+    "type": "radio",
+    "question": "1. Sweatshirt Size",
+    "answers": [
+      "Small",
+      "Medium",
+      "Large",
+      "XL",
+      "XXL"
+    ]
+  },
+  {
+    "name": "answerTwo",
+    "type": "text",
+    "question": "2. Dietary Restrictions"
+  },
+  {
+    "name": "answerThree",
+    "type": "agree",
+    "question": "3. Confirm that you read and understand the <a href='#' data-open-modal='waiver'>covid waiver</a> by clicking the box below."
+  },
+  {
+    "name": "answerFour",
+    "type": "radio",
+    "question": "4. Have you been to a GeekOut Event before?",
+    "answers": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "name": "answerFive",
+    "type": "radio",
+    "question": "5. Are you currently advertising on Amazon?",
+    "answers": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "name": "answerSix",
+    "type": "radio",
+    "question": "6. Do you create your own ad content?",
+    "answers": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "name": "answerSeven",
+    "type": "text",
+    "question": "7. Please describe your business and what you usually do?"
+  },
+  {
+    "name": "answerEight",
+    "type": "text",
+    "question": "8. What is your role in the business?"
+  },
+  {
+    "name": "answerNine",
+    "type": "text",
+    "question": "9. What are you most excited to learn about"
+  },
+  {
+    "name": "answerTen",
+    "type": "text",
+    "question": "10. Who are the types of people you want to connect with?"
+  },
+  {
+    "name": "answerEleven",
+    "type": "text",
+    "question": "11. What is the biggest opportunity in your business today?"
+  },
+  {
+    "name": "answerTwelve",
+    "type": "text",
+    "question": "12. What marketing channel commands the most budget?"
+  },
+  {
+    "name": "answerThirteen",
+    "type": "text",
+    "question": "13. What is your yearly revenue?"
+  },
+  {
+    "name": "answerFourteen",
+    "type": "text",
+    "question": "14. What would make this the best event you’ve ever been to?"
+  }
+]
