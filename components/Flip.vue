@@ -1,66 +1,170 @@
 <template>
-  <div class="flip">
-    <Flipbook
-      class="flipbook"
-      :pages="pages"
-      v-slot="flipbook"
-      ref="flipbook"
-    ></Flipbook>
-  </div>
+  <section class="flip">
+    <div class="swiper-flip">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div v-for="page in magazineObj" :key="page.img" class="swiper-slide">
+          <img :src="page.img" />
+          <div class="bottom-bar">
+            <el-row>
+              <el-button type="primary" @click="$parent.modalData(page)"
+                >Подробнее</el-button
+              >
+            </el-row>
+          </div>
+          <el-card shadow="always">
+            <el-row>
+              <el-button type="primary" circle
+                ><font-awesome-icon :icon="['fas', 'thumbs-up']"
+              /></el-button>
+              <el-button v-if="page.instagram" type="primary" circle
+                ><font-awesome-icon :icon="['fab', 'instagram']"
+              /></el-button>
+              <el-button v-if="page.facebook" type="danger" circle
+                ><font-awesome-icon :icon="['fab', 'facebook']"
+              /></el-button>
+              <el-button v-if="page.telegram" type="primary" circle
+                ><font-awesome-icon :icon="['fab', 'telegram']"
+              /></el-button>
+              <el-button v-if="page.tiktok" type="black" circle
+                ><font-awesome-icon :icon="['fab', 'tiktok']"
+              /></el-button>
+              <el-button v-if="page.site" type="primary" plain>Сайт</el-button>
+            </el-row>
+            <el-row>
+              <el-rate v-model="value1"></el-rate>
+            </el-row>
+          </el-card>
+        </div>
+      </div>
+
+      <div class="flip__buttons">
+        <el-button
+          type="text"
+          class="button-prev"
+          icon="el-icon-d-arrow-left"
+        ></el-button>
+        <el-button
+          type="text"
+          class="button-next"
+          icon="el-icon-d-arrow-right"
+        ></el-button>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-scrollbar"></div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-import Flipbook from 'flipbook-vue'
+import Swiper from 'swiper/swiper-bundle.min'
+import 'swiper/swiper-bundle.css'
 export default {
-  components: {
-    Flipbook,
-  },
+  props:['magazineObj'],
   data() {
     return {
-      pages: [
-        require('@/assets/img/1.jpeg'),
-        require('@/assets/img/2.jpg'),
-        require('@/assets/img/3.jpeg'),
-        require('@/assets/img/4.jpeg'),
-        require('@/assets/img/5.jpeg'),
-      ],
-      pagesHiRes: [
-        require('@/assets/img/1.jpeg'),
-        require('@/assets/img/2.jpg'),
-        require('@/assets/img/3.jpeg'),
-        require('@/assets/img/4.jpeg'),
-        require('@/assets/img/5.jpeg'),
-      ],
+      swiper: null,
+      value1: null,
     }
+  },
+  mounted() {
+    this.swiperInit()
+  },
+  methods: {
+    swiperInit() {
+      this.swiper = new Swiper(this.$el.children[0], {
+        watchSlidesProgress: true,
+        slidesPerView: 1,
+        effect: 'cards',
+        centeredSlides: false,
+        slidesPerGroupSkip: 1,
+        navigation: {
+          nextEl: '.button-next',
+          prevEl: '.button-prev',
+        },
+        breakpoints: {
+          576: {
+            slidesPerView: 1,
+          },
+          768: {},
+          992: {},
+        },
+      })
+    },
   },
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
 .flip {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #333;
   color: #ccc;
   overflow: hidden;
-  .flipbook {
-    width: 90vw;
-    height: 90vh;
+  position: relative;
+  .swiper {
+    &-wrapper {
+      display: flex;
+      align-items: center;
+    }
   }
-
-  .flipbook .viewport {
-    width: 90vw;
-    height: calc(100vh - 50px - 40px);
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: auto;
+    &-shadow {
+      background: rgba(51, 51, 51, 0.384);
+    }
+    img {
+      display: block;
+      width: 100%;
+      max-width: 450px;
+    }
   }
-
-  .flipbook .bounding-box {
-    box-shadow: 0 0 20px #000;
+  .bottom-bar {
+    margin: 20px 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.301);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    .el-button--text {
+      color: #ffffff;
+      font-size: 75px;
+    }
+    .button-next {
+      position: absolute;
+      right: 0;
+    }
+    .button-prev {
+      position: absolute;
+      left: 0;
+    }
+  }
+  .el-card {
+    .el-row {
+      margin: 10px;
+      text-align: center;
+    }
   }
 }
-</style>
 </style>

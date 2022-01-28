@@ -11,12 +11,17 @@
     "lint": "npm run lint:js"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/vue-fontawesome": "^2.0.6",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/moment": "^1.6.1",
     "@nuxtjs/style-resources": "^1.2.1",
     "@vimeo/player": "^2.16.1",
     "bigpicture": "^2.5.3",
     "core-js": "^3.15.1",
+    "element-ui": "^2.15.6",
     "flipbook-vue": "^0.10.4",
     "gsap": "^3.7.1",
     "moment": "^2.29.1",

@@ -30,9 +30,12 @@ export default {
       href: '/favicon.ico'
     }],
   },
-  css: ['@/assets/styles/reset.scss', '@/assets/styles/main.scss'],
+  css: ['@/assets/styles/reset.scss', '@/assets/styles/main.scss', '@fortawesome/fontawesome-svg-core/styles.css'],
   plugins: [
     '@/plugins/vee-validate.js',
+    '@/plugins/element-ui.js',
+    '@/plugins/font-awasome.js',
+    // '@/plugins/material-icons.js',
   ],
   components: true,
   buildModules: [
