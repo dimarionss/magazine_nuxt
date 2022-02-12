@@ -13,27 +13,38 @@
               >
             </el-row>
           </div>
-          <el-card shadow="always">
+          <el-card shadow="always" class="flip-soc">
             <el-row>
-              <el-button type="primary" circle
-                ><font-awesome-icon :icon="['fas', 'thumbs-up']"
-              /></el-button>
-              <el-button v-if="page.instagram" type="primary" circle
-                ><font-awesome-icon :icon="['fab', 'instagram']"
-              /></el-button>
-              <el-button v-if="page.facebook" type="danger" circle
-                ><font-awesome-icon :icon="['fab', 'facebook']"
-              /></el-button>
-              <el-button v-if="page.telegram" type="primary" circle
-                ><font-awesome-icon :icon="['fab', 'telegram']"
-              /></el-button>
-              <el-button v-if="page.tiktok" type="black" circle
-                ><font-awesome-icon :icon="['fab', 'tiktok']"
-              /></el-button>
-              <el-button v-if="page.site" type="primary" plain>Сайт</el-button>
+              <div
+                v-if="page.instagram"
+                class="flip-soc-item soc-link --inst"
+                @click="openLink(page.instagram)"
+              ></div>
+              <div
+                v-if="page.facebook"
+                class="flip-soc-item soc-link --fb"
+                @click="openLink(page.facebook)"
+              ></div>
+              <div
+                v-if="page.telegram"
+                class="flip-soc-item soc-link --tg"
+                @click="openLink(page.telegram)"
+              ></div>
+              <div
+                v-if="page.tiktok"
+                class="flip-soc-item soc-link --tk"
+                @click="openLink(page.tiktok)"
+              ></div>
+              <el-button
+                v-if="page.site"
+                type="primary"
+                plain
+                @click="openLink(page.site)"
+                >Сайт</el-button
+              >
             </el-row>
             <el-row>
-              <el-rate v-model="value1"></el-rate>
+              <!-- <el-rate v-model="value1"></el-rate> -->
             </el-row>
           </el-card>
         </div>
@@ -61,7 +72,7 @@
 import Swiper from 'swiper/swiper-bundle.min'
 import 'swiper/swiper-bundle.css'
 export default {
-  props:['magazineObj'],
+  props: ['magazineObj'],
   data() {
     return {
       swiper: null,
@@ -91,6 +102,9 @@ export default {
           992: {},
         },
       })
+    },
+    openLink(link) {
+      window.location = link
     },
   },
 }
@@ -164,6 +178,33 @@ export default {
     .el-row {
       margin: 10px;
       text-align: center;
+    }
+  }
+  &-soc {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    max-width: 450px;
+    border: none !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .el-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-item {
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      margin: 0 10px;
+      &:hover {
+        opacity: 0.7;
+      }
     }
   }
 }

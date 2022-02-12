@@ -1,16 +1,16 @@
 <template>
   <div class="autorization">
-    <el-form>
-      <el-form-item label="Email">
-        <el-input v-model="email" />
-      </el-form-item>
-      <el-form-item label="Password">
-        <el-input placeholder="password" v-model="password" />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click.prevent="authSubmit">Login</el-button>
-      </el-form-item>
-    </el-form>
+    <form @submit.prevent="authSubmit">
+      <div class="autorization-controls">
+        <label for="email">Email</label>
+        <input id="email" type="email" v-model="email" required />
+      </div>
+      <div class="autorization-controls">
+        <label for="password">Password</label>
+        <input id="password" type="text" v-model="password" required />
+      </div>
+      <button type="submit">Login</button>
+    </form>
   </div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
   },
 }
 </script>
+
 <style lang="scss">
 .autorization {
   width: 100%;
@@ -43,6 +44,24 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+  input {
+    -webkit-appearance: none;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: inherit;
+    height: 40px;
+    line-height: 40px;
+    outline: 0;
+    padding: 0 15px;
+    transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    width: 100%;
+    margin-bottom: 20px;
+  }
   label {
     color: #fff;
   }

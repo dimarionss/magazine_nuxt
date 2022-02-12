@@ -407,3 +407,47 @@ $minS: 480;
     opacity: 0;
   }
 }
+
+
+
+.soc-link {
+  display: block;
+  width: 24px;
+  height: 24px;
+  text-decoration: none;
+
+  &.--inst {
+    background: url('@/assets/img/icon/instagram.png') center no-repeat;
+    background-size: contain;
+  }
+
+  &.--tw {
+    background: url('@/assets/img/icon/twitter.png') center no-repeat;
+    background-size: contain;
+  }
+
+  &.--fb {
+    background: url('@/assets/img/icon/facebook.png') center no-repeat;
+    background-size: contain;
+  }
+
+  &.--google {
+    background: url('@/assets/img/icon/google+.png') center no-repeat;
+    background-size: contain;
+  }
+
+  &.--tk {
+    background: url('@/assets/img/icon/tiktok2.png') center no-repeat;
+    background-size: contain;
+  }
+
+  &.--tg {
+    background: url('@/assets/img/icon/telegram.png') center no-repeat;
+    background-size: contain;
+  }
+
+  &.--vb {
+    background: url('@/assets/img/icon/viber.png') center no-repeat;
+    background-size: contain;
+  }
+}
