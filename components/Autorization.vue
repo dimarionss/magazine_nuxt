@@ -3,11 +3,11 @@
     <form @submit.prevent="authSubmit">
       <div class="autorization-controls">
         <label for="email">Email</label>
-        <input id="email" type="email" v-model="email" required />
+        <input id="email" type="email" v-model="dataForm.email" required />
       </div>
       <div class="autorization-controls">
         <label for="password">Password</label>
-        <input id="password" type="text" v-model="password" required />
+        <input id="password" type="text" v-model="dataForm.password" required />
       </div>
       <button type="submit">Login</button>
     </form>
@@ -19,13 +19,26 @@
 export default {
   data() {
     return {
-      email: '',
-      password: '',
+      dataForm: {
+        email: '',
+        password: '',
+      },
     }
   },
   methods: {
-    authSubmit() {
-      console.log('hello')
+    async authSubmit(e) {
+      if (
+        this.dataForm.email === 'test@gmail.com' &&
+        this.dataForm.password === '123'
+      ) {
+        this.$store.commit('magazine/stateAuth', true)
+      } else {
+        // const response = await this.$store.dispatch(
+        //   'magazine/authAdmin',
+        //   this.dataForm
+        // )
+        console.log(this.dataForm)
+      }
     },
   },
 }

@@ -7,7 +7,10 @@
 
     <el-row>
       <h2>Изображение</h2>
-      <PartialsUpload />
+      <PartialsUpload
+        ref="img"
+        @uploadImg="uploadFile"
+      />
     </el-row>
 
     <el-row>
@@ -87,7 +90,7 @@
         />
       </el-col>
     </div>
-    <button type="submit">Добавить</button>
+    <button type="submit" @click="sendAdv">Добавить</button>
   </div>
 </template>
 <script>
@@ -108,6 +111,15 @@ export default {
         site: '',
       },
     }
+  },
+  methods: {
+    sendAdv() {
+      console.log(this.dataAdvert)
+    },
+    uploadFile(file) {
+      this.dataAdvert.img = file
+      console.log(this.dataAdvert.img)
+    },
   },
 }
 </script>

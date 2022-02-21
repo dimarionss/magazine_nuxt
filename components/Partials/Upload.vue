@@ -14,7 +14,7 @@
           <span
             v-if="!disabled"
             class="el-upload-list__item-delete"
-            @click="handleDownload(file)"
+            @click="$emit('uploadImg', file)"
           >
             <i class="el-icon-download"></i>
           </span>

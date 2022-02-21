@@ -1,9 +1,20 @@
 <template>
-  <div class="magazine-wrap">
+  <div class="admin-wrap">
     <div class="container">
       <h1>ADMIN PAGE</h1>
-      <!-- <Autorization /> -->
-      <AdminPage />
+      <button
+        v-if="$store.getters['magazine/GET_AUTH']"
+        type="submit"
+        @click="$store.commit('magazine/stateAuth', false)"
+      >
+        Выход
+      </button>
+      <div class="admin-inner" v-if="$store.getters['magazine/GET_AUTH']">
+        <AdminPage />
+      </div>
+      <div class="admin-inner" v-else>
+        <Autorization />
+      </div>
     </div>
   </div>
 </template>
