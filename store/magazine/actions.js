@@ -3,11 +3,13 @@ export default {
     commit
   }, data) {
     const res = await this.$axios.$post('', {
-      couponCode: data,
+      email: data.email,
+      password: data.password,
     })
-    if (res === 'true') {
-      commit('stateAuth', true)
-    }
+    console.log(res)
+    // if (res === 'true') {
+    //   commit('stateAuth', true)
+    // }
 
     return res
   },

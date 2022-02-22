@@ -49,6 +49,8 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/axios',
   ],
+  axios: {
+  },
   styleResources: {
     scss: [
       '@/assets/styles/helper/_vars-helper.scss',
