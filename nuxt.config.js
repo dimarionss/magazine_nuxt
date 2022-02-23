@@ -5,6 +5,10 @@ export default {
       lang: 'en',
       class: 'geekoutevent',
     },
+    server: {
+      port: process.env.PORT,
+      host: "localhost",
+    },
     meta: [{
         charset: 'utf-8'
       },
@@ -29,7 +33,7 @@ export default {
       href: '/favicon.ico'
     }],
   },
-  css: ['@/assets/styles/reset.scss', '@/assets/styles/main.scss', '@fortawesome/fontawesome-svg-core/styles.css'],
+  css: ['@/assets/styles/reset.scss', '@/assets/styles/main.scss'],
   plugins: [
     '@/plugins/element-ui.js',
   ],

@@ -1,7 +1,7 @@
 <template>
   <div class="magazine-wrap">
     <div class="container">
-      <Flip :magazineObj="pagesMagazine" />
+      <Flip :magazineObj="$store.getters['magazine/GET_ADV']" />
       <Modal v-if="dialogVisible" :modalContent="modalContentSend" />
     </div>
   </div>
@@ -98,7 +98,16 @@ export default {
       },
     }
   },
+  mounted() {
+    this.loadingAdvertising()
+  },
   methods: {
+    async loadingAdvertising() {
+      const response = await this.$store.dispatch(
+        'magazine/getAdvertising',
+        this.dataAdvert
+      )
+    },
     modalData(data) {
       this.modalContentSend = {
         title: data.title,

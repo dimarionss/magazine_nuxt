@@ -1,5 +1,5 @@
 <template>
-  <div class="admin_page">
+  <el-card class="admin_page" v-loading="loading">
     <el-row>
       <h2>Заголовок</h2>
       <el-input placeholder="Заголовок" v-model="dataAdvert.title" clearable />
@@ -88,12 +88,13 @@
       </el-col>
     </div>
     <button type="submit" @click="sendAdv">Добавить</button>
-  </div>
+  </el-card>
 </template>
 <script>
 export default {
   data() {
     return {
+      loading: false,
       dataAdvert: {
         title: '',
         img: null,
@@ -111,10 +112,17 @@ export default {
   },
   methods: {
     async sendAdv() {
+      this.loading = true
       const response = await this.$store.dispatch(
         'magazine/addAdvertising',
         this.dataAdvert
       )
+      if (response.text) {
+        this.$alert(response.text, 'Title', {
+          confirmButtonText: 'OK',
+        })
+        this.loading = false
+      }
     },
     uploadFile(file) {
       this.dataAdvert.img = file
@@ -125,6 +133,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .admin_page {
+  width: 100%;
   h2 {
     margin: 10px 0;
     font-size: 23px;

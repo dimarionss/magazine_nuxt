@@ -39,9 +39,11 @@ export default {
   async getAdvertising({
     commit
   }) {
-    const res = await this.$axios.$get('/api/add_adverising')
+    const res = await this.$axios.$get('/api/get_adverising')
+    
     if (res.type === 'success') {
       commit('uploadAdv', res.advertising)
+      console.log(res)
     }
     return res
   },

@@ -4,7 +4,7 @@
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <!-- Slides -->
-        <div v-for="page in magazineObj" :key="page.img" class="swiper-slide">
+        <div v-for="page in magazineObj" :key="page.title" class="swiper-slide">
           <img :src="page.img" />
           <div class="bottom-bar">
             <el-row>
@@ -119,6 +119,7 @@ export default {
     &-wrapper {
       display: flex;
       align-items: center;
+      min-height: 250px;
     }
   }
   .swiper-slide {
