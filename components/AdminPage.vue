@@ -7,10 +7,7 @@
 
     <el-row>
       <h2>Изображение</h2>
-      <PartialsUpload
-        ref="img"
-        @uploadImg="uploadFile"
-      />
+      <PartialsUpload ref="img" @uploadImg="uploadFile" />
     </el-row>
 
     <el-row>
@@ -113,8 +110,11 @@ export default {
     }
   },
   methods: {
-    sendAdv() {
-      console.log(this.dataAdvert)
+    async sendAdv() {
+      const response = await this.$store.dispatch(
+        'magazine/addAdvertising',
+        this.dataAdvert
+      )
     },
     uploadFile(file) {
       this.dataAdvert.img = file

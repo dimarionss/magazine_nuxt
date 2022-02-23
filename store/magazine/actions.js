@@ -2,36 +2,46 @@ export default {
   async authAdmin({
     commit
   }, data) {
-    const res = await this.$axios.$post('', {
+    const res = await this.$axios.$post('/api/login', {
       email: data.email,
       password: data.password,
     })
     console.log(res)
-    // if (res === 'true') {
-    //   commit('stateAuth', true)
-    // }
+    if (res.type === "success") {
+      commit('stateAuth', true)
+    }
 
     return res
   },
   async addAdvertising({
     commit
   }, data) {
-    const res = await this.$axios.$post('', {
-      couponCode: data,
+    const res = await this.$axios.$post('/api/add_adverising', {
+      title: data.title,
+      img: data.img,
+      text: data.text,
+      phone: data.phone,
+      sale: data.sale,
+      adress: data.adress,
+      instagram: data.instagram,
+      facebook: data.facebook,
+      tiktok: data.tiktok,
+      telegram: data.telegram,
+      site: data.site,
+
     })
-    if (res === 'true') {
-      commit('uploadAdv', data)
+    console.log(res)
+    if (res.type === 'success') {
+      commit('uploadAdv', res.advertising)
     }
     return res
   },
   async getAdvertising({
     commit
-  }, data) {
-    const res = await this.$axios.$get('', {
-      couponCode: data,
-    })
-    if (res === 'true') {
-      commit('uploadAdv', data)
+  }) {
+    const res = await this.$axios.$get('/api/add_adverising')
+    if (res.type === 'success') {
+      commit('uploadAdv', res.advertising)
     }
     return res
   },
@@ -41,8 +51,8 @@ export default {
     const res = await this.$axios.$post('', {
       couponCode: data,
     })
-    if (res === 'true') {
-      commit('uploadAdv', data)
+    if (res.type === 'success') {
+      commit('uploadAdv', res.advertising)
     }
     return res
   },

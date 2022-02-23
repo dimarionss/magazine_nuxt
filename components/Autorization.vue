@@ -27,18 +27,22 @@ export default {
   },
   methods: {
     async authSubmit(e) {
-      if (
-        this.dataForm.email === 'test@gmail.com' &&
-        this.dataForm.password === '123'
-      ) {
-        this.$store.commit('magazine/stateAuth', true)
-      } else {
-        // const response = await this.$store.dispatch(
-        //   'magazine/authAdmin',
-        //   this.dataForm
-        // )
-        console.log(this.dataForm)
-      }
+      const response = await this.$store.dispatch(
+        'magazine/authAdmin',
+        this.dataForm
+      )
+      // if (
+      //   this.dataForm.email === 'test@gmail.com' &&
+      //   this.dataForm.password === '123'
+      // ) {
+      //   this.$store.commit('magazine/stateAuth', true)
+      // } else {
+      //   // const response = await this.$store.dispatch(
+      //   //   'magazine/authAdmin',
+      //   //   this.dataForm
+      //   // )
+      //   console.log(this.dataForm)
+      // }
     },
   },
 }

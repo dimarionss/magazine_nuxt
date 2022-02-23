@@ -1,5 +1,4 @@
 export default {
-  ssr: false,
   head: {
     title: 'Zagotovka',
     htmlAttrs: {
@@ -32,10 +31,7 @@ export default {
   },
   css: ['@/assets/styles/reset.scss', '@/assets/styles/main.scss', '@fortawesome/fontawesome-svg-core/styles.css'],
   plugins: [
-    '@/plugins/vee-validate.js',
     '@/plugins/element-ui.js',
-    '@/plugins/font-awasome.js',
-    // '@/plugins/material-icons.js',
   ],
   components: true,
   buildModules: [
@@ -44,12 +40,13 @@ export default {
     '@nuxtjs/moment',
     'nuxt-gsap-module'
   ],
-  gsap: {},
   modules: [
     '@nuxtjs/style-resources',
     '@nuxtjs/axios',
   ],
+
   axios: {
+    baseURL: process.env.BASE_URL
   },
   styleResources: {
     scss: [
@@ -73,6 +70,6 @@ export default {
     dir: './dist_server'
   },
   build: {
-    target: 'static'
+    target: 'server'
   }
 }
