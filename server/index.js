@@ -3,11 +3,19 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
+app.use(bodyParser.json({limit: '200mb'}));
+app.use(bodyParser.urlencoded({limit: '200mb', extended: true}));
 app.use(express.json());
 // создаем парсер для данных application/x-www-form-urlencoded
+// bodyParser = {
+//   json: {limit: '200mb', extended: true},
+//   urlencoded: {limit: '200mb', extended: true}
+// };
 const urlencodedParser = bodyParser.urlencoded({
-  extended: false
+  limit: '200mb',
+  extended: true
 });
+
 // Подключаем mysql и делаем коннект к базе данных.
 // Прописываем стандартные настройки mysql.
 const mysql = require("mysql");

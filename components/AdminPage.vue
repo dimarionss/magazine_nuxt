@@ -12,32 +12,17 @@
 
     <el-row>
       <h2>Описание</h2>
-      <el-input
-        type="textarea"
-        :rows="5"
-        placeholder="Описание"
-        v-model="dataAdvert.text"
-        maxlength="30"
-        show-word-limit
-      />
+      <el-input type="textarea" :rows="5" placeholder="Описание" v-model="dataAdvert.text" maxlength="30" show-word-limit />
     </el-row>
 
     <div class="admin_page-col">
       <el-col :span="11">
         <h2>Номер Телефона</h2>
-        <el-input
-          placeholder="Заголовок"
-          v-model="dataAdvert.phone"
-          clearable
-        />
+        <el-input placeholder="Заголовок" v-model="dataAdvert.phone" clearable />
       </el-col>
       <el-col :span="11">
         <h2>Адресс</h2>
-        <el-input
-          placeholder="Заголовок"
-          v-model="dataAdvert.adress"
-          clearable
-        />
+        <el-input placeholder="Заголовок" v-model="dataAdvert.adress" clearable />
       </el-col>
     </div>
 
@@ -54,37 +39,21 @@
     <div class="admin_page-col">
       <el-col :span="11">
         <h2>Instagram</h2>
-        <el-input
-          placeholder="Заголовок"
-          v-model="dataAdvert.instagram"
-          clearable
-        />
+        <el-input placeholder="Заголовок" v-model="dataAdvert.instagram" clearable />
       </el-col>
       <el-col :span="11">
         <h2>Facebook</h2>
-        <el-input
-          placeholder="Заголовок"
-          v-model="dataAdvert.facebook"
-          clearable
-        />
+        <el-input placeholder="Заголовок" v-model="dataAdvert.facebook" clearable />
       </el-col>
     </div>
     <div class="admin_page-col">
       <el-col :span="11">
         <h2>Tiktok</h2>
-        <el-input
-          placeholder="Заголовок"
-          v-model="dataAdvert.tiktok"
-          clearable
-        />
+        <el-input placeholder="Заголовок" v-model="dataAdvert.tiktok" clearable />
       </el-col>
       <el-col :span="11">
         <h2>Telegram</h2>
-        <el-input
-          placeholder="Заголовок"
-          v-model="dataAdvert.telegram"
-          clearable
-        />
+        <el-input placeholder="Заголовок" v-model="dataAdvert.telegram" clearable />
       </el-col>
     </div>
     <button type="submit" @click="sendAdv">Добавить</button>
@@ -125,8 +94,16 @@ export default {
       }
     },
     uploadFile(file) {
-      this.dataAdvert.img = file
-      console.log(this.dataAdvert.img)
+      if (file !== null) {
+        const reader = new FileReader()
+        reader.readAsDataURL(file.raw)
+        reader.onload = () => {
+          const base64Image = reader.result.split('data:image/png;base64,')[1]
+          this.dataAdvert.img = base64Image
+        }
+      } else {
+        this.dataAdvert.img = file
+      }
     },
   },
 }

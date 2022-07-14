@@ -1,7 +1,7 @@
 <template>
   <div class="magazine-wrap">
     <div class="container">
-      <Flip :magazineObj="$store.getters['magazine/GET_ADV']" />
+      <Flip />
       <Modal v-if="dialogVisible" :modalContent="modalContentSend" />
     </div>
   </div>
